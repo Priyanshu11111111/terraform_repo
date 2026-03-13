@@ -1,0 +1,4 @@
+3 terraform init
+   4 terraform validate
+   5 terraform plan
+   6 terraform apply
