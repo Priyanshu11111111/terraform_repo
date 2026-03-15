@@ -68,11 +68,12 @@ resource "aws_security_group" "my_security_group" {
 resource "aws_instance" "my_instance" {
     key_name = aws_key_pair.aws_key.key_name
     security_groups = [aws_security_group.my_security_group.name]
-    instance_type= "t2-micro"
-    ami = " " #give ami id from aws
+    instance_type= var.ec2_instanse_type
+    ami = var.ec2_ami_id #give ami id from aws
+    user_data = file("install_nginx.sh")  #user_data allow you to run shell script when instance are creating in this case we are install an run nginx in ec2 instance 
 
     root_block_device {
-      volume_size = 15
+      volume_size = var.ec2_ami_id
       volume_type = "gp3"
     }
 
