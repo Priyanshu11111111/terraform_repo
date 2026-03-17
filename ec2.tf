@@ -66,6 +66,7 @@ resource "aws_security_group" "my_security_group" {
 #step4 ec2 instance
 
 resource "aws_instance" "my_instance" {
+    #count = 2
     key_name = aws_key_pair.aws_key.key_name
     security_groups = [aws_security_group.my_security_group.name]
     instance_type= var.ec2_instanse_type
